@@ -5,6 +5,8 @@
 
 In today's digital landscape, organizations are increasingly relying on AI-powered services like Azure Open AI (AOAI) to enhance customer interactions and streamline operations. However, gaining granular insights into how these services are being used is crucial for both monitoring and cost allocation. Our solution combines various Azure services to address this need, ensuring that API calls to AOAI pass through the Azure API Management (APIM) gateway. This architecture captures critical details such as user interactions, token consumption, and response data. These insights not only enable effective monitoring but also facilitate internal billing processes. Let's explore the key components of this solution.
 
+![Basic Architecture Diagram](media/basicdiagram.png)
+
 Solution Components:
 
 Azure API Management (APIM):
@@ -44,4 +46,3 @@ By integrating these components, our solution not only offers the transparency n
 
 
 
-![Basic Architecture Diagram](media/basicdiagram.png)
