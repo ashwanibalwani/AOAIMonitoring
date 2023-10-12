@@ -1,6 +1,8 @@
 # Enhancing OpenAI Usage Transparency and Billing Accuracy with Azure Open AI and Azure API Management Integration
 [![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fashwanibalwani%2FAOAIMonitoring%2Fmain%2Fdeploy%2Fdeploy.generated.json)
 
+
+
 In today's digital landscape, organizations are increasingly relying on AI-powered services like Azure Open AI (AOAI) to enhance customer interactions and streamline operations. However, gaining granular insights into how these services are being used is crucial for both monitoring and cost allocation. Our solution combines various Azure services to address this need, ensuring that API calls to AOAI pass through the Azure API Management (APIM) gateway. This architecture captures critical details such as user interactions, token consumption, and response data. These insights not only enable effective monitoring but also facilitate internal billing processes. Let's explore the key components of this solution.
 
 Solution Components:
