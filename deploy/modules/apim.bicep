@@ -1,7 +1,11 @@
 param location string
+param logAnalyticsName string
+param appInsightsName string
+param apimName string
+param apimEmail string
 
 resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
-  name: uniqueName
+  name: logAnalyticsName
   location: location
   properties: {
     retentionInDays: 30
@@ -12,7 +16,7 @@ resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
 }
 
 resource appInsights 'Microsoft.Insights/components@2020-02-02-preview' = {
-  name: uniqueName
+  name: appInsightsName
   location: location
   kind: 'web'
   properties: { 
@@ -22,7 +26,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02-preview' = {
 }
 
 resource apim 'Microsoft.ApiManagement/service@2021-08-01' = {
-  name: uniqueName
+  name: apimName
   location: location
   sku: {
     capacity: 1
@@ -30,7 +34,7 @@ resource apim 'Microsoft.ApiManagement/service@2021-08-01' = {
   }
   properties: {
     publisherEmail: apimEmail
-    publisherName: uniqueName
+    publisherName: apimName
   }
   resource appins 'loggers@2021-08-01' = {
     name: 'appins'

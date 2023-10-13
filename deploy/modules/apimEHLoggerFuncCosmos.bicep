@@ -1,9 +1,13 @@
 param location string
+param existingApimName string
+param eventHubNamespaceName string
+param eventHubName string
+param apimLoggerName string
 
-resource apim 'Microsoft.ApiManagement/service@2021-08-01' = {
-  name: uniqueName
+resource apim 'Microsoft.ApiManagement/service@2021-08-01' existing = {
+  name: existingApimName
   resource eventHubLogger 'loggers@2023-03-01-preview' = {
-    name: 'eventHub'
+    name: apimLoggerName
     properties: {
       loggerType: 'azureEventHub'
       credentials: {
@@ -15,7 +19,7 @@ resource apim 'Microsoft.ApiManagement/service@2021-08-01' = {
 }
 
 resource eventHubNamespace 'Microsoft.EventHub/namespaces@2023-01-01-preview' = {
-  name: uniqueName
+  name: eventHubNamespaceName
   location: location
   sku: {
     name: 'Standard'
@@ -26,13 +30,13 @@ resource eventHubNamespace 'Microsoft.EventHub/namespaces@2023-01-01-preview' = 
     isAutoInflateEnabled: false
   }
   resource eventHub 'eventhubs@2023-01-01-preview' = {
-    name: 'apimEvents'
+    name: eventHubName
     properties: {
       messageRetentionInDays: 7
       partitionCount: 1
     }
     resource senderAuth 'authorizationRules@2023-01-01-preview' = {
-      name: 'apimSend'
+      name: 'apimLogger'
       properties: {
         rights: [
           'Send'
@@ -41,3 +45,6 @@ resource eventHubNamespace 'Microsoft.EventHub/namespaces@2023-01-01-preview' = 
     }
   }
 }
+
+
+// TODO: Func + Cosmos

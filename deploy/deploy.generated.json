@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.22.6.54827",
+      "templateHash": "6303874783204842139"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "AustraliaEast",
+      "metadata": {
+        "description": "The location for all resources to be deployed"
+      }
+    },
+    "prefix": {
+      "type": "string",
+      "defaultValue": "demo",
+      "metadata": {
+        "description": "The prefix to be used for all resource names, should only be alphanumeric"
+      }
+    },
+    "apimEmail": {
+      "type": "string",
+      "defaultValue": "noreply@microsoft.com"
+    }
+  },
+  "variables": {
+    "uniqueName": "[format('{0}{1}', toLower(parameters('prefix')), uniqueString(parameters('prefix'), resourceGroup().id))]"
+  },
+  "resources": []
+}
