@@ -15,7 +15,7 @@ resource openai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
     customSubDomainName: openaiSubDomain
   }
   
-  resource gpt35turbo16k 'deployments@2023-05-01' = {
+  resource modelDeployment 'deployments@2023-05-01' = {
     name: modelName
     sku: {
       name: 'Standard'
@@ -30,3 +30,5 @@ resource openai 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
     }
   }
 }
+
+output openaiEndpoint string = openai.properties.endpoint
